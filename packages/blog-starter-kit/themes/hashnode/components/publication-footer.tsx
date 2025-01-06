@@ -34,13 +34,13 @@ function PublicationFooter(props: any) {
             &copy;{new Date().getFullYear()} {title || `${authorName}'s Blog`}
           </p>
           <div className="flex flex-row items-center text-slate-600 dark:text-slate-300">
-            <a href="https://hashnode.com/privacy?source=blog-footer" className="mx-2 underline">
+            {/* <a href="https://hashnode.com/privacy?source=blog-footer" className="mx-2 underline">
               Privacy policy
             </a>
             <span className="font-extrabold text-black opacity-20 dark:text-white">&middot;</span>
             <a className="mx-2 underline" href="https://hashnode.com/terms?source=blog-footer">
               Terms
-            </a>
+            </a> */}
           </div>
         </div>
         {disableFooterBranding ? (
