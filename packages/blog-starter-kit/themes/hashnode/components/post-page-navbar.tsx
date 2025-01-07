@@ -14,6 +14,7 @@ import useStickyNavScroll from './use-sticky-nav-scroll';
 import { PublicationFragment } from '../generated/graphql';
 import { Button } from './custom-button';
 import PublicationLogo from './publication-logo';
+import WhatsAppButton from './whatsapp';
 
 type Props = {
 	publication: Pick<PublicationFragment, 'id' | 'title' | 'links' | 'url' | 'features' | 'isTeam' | 'author' | 'preferences'>;
@@ -63,6 +64,7 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 					)}
 				>
 					<HeaderBlogSearch publication={publication} />
+					<WhatsAppButton />
 					<Button as="a" href="https://interview.lldcoding.com/" className="bg-brand-orange" type="primary" label="Buy Course" />
 				</div>
 			</div>
