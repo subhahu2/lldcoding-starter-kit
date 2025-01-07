@@ -63,7 +63,7 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 					)}
 				>
 					<HeaderBlogSearch publication={publication} />
-					{/* <Button as="a" href="#" type="primary" label="Sign up" /> */}
+					<Button as="a" href="https://interview.lldcoding.com/" className="bg-brand-orange" type="primary" label="Buy Course" />
 				</div>
 			</div>
 

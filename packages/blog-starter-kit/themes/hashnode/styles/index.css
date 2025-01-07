@@ -296,3 +296,8 @@ img.image--right {
     @apply ring-blue-600 ring-offset-white dark:ring-offset-slate-800;
   }
 }
+
+
+.bg-brand-orange {
+  background-color: rgb(255 161 22) !important;
+}
