@@ -8,6 +8,7 @@ import PublicationLogo from './publication-logo';
 import PublicationNavLinks from './publication-nav-links';
 import PublicationSocialLinks from './publication-social-links';
 import WhatsAppButton from './whatsapp';
+import YouTubeButton from './youtube';
 
 type Props = {
 	currentMenuId?: string | null;
@@ -45,6 +46,7 @@ export const Header = (props: Props) => {
 					>
 						<HeaderBlogSearch publication={publication} />
 <WhatsAppButton />
+						<YouTubeButton />
 						<Button as="a" href="https://interview.lldcoding.com/" className="bg-brand-orange"  type="primary" label="Buy Course" />
 					</div>
 				</div>
