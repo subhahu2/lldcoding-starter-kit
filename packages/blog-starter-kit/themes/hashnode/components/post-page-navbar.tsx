@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { forwardRef } from 'react';
+import { forwardRef, useRef, useState } from 'react';
 import { twJoin } from 'tailwind-merge';
 
 /* eslint-disable no-nested-ternary */
@@ -16,6 +16,7 @@ import { Button } from './custom-button';
 import PublicationLogo from './publication-logo';
 import WhatsAppButton from './whatsapp';
 import YouTubeButton from './youtube';
+import TryOurCourseModal from './TryOurCourseModal';
 
 type Props = {
 	publication: Pick<PublicationFragment, 'id' | 'title' | 'links' | 'url' | 'features' | 'isTeam' | 'author' | 'preferences'>;
@@ -23,12 +24,20 @@ type Props = {
 
 const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 	const { publication } = props;
+	const [showTryModal, setShowTryModal] = useState(true);
+	const tryModalDismissed = useRef(false);
+
+	const handleTryModalClose = () => {
+		setShowTryModal(false);
+		tryModalDismissed.current = true; // Persist modal dismissal state
+	};
 
 	useStickyNavScroll({ elRef: ref });
 
 	const commonIconBtnStyles = getCommonBtnStyles();
 
 	return (
+		<>
 		<div className="container mx-auto px-2 md:px-4 md:py-1 2xl:px-10">
 			<div className="relative z-40 flex flex-row items-center justify-between pb-2 pt-8 md:py-4">
 				<div
@@ -83,6 +92,8 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 				</div>
 			</div>
 		</div>
+		{showTryModal && <TryOurCourseModal onClose={handleTryModalClose} />}
+		</>
 	);
 });
 
