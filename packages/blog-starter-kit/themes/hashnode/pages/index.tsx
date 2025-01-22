@@ -54,7 +54,7 @@ export default function Index(
 	const [fetching, setFetching] = useState(false);
 
 	const { author, preferences, pinnedPost } = publication;
-	const dynamicLimit = preferences.layout === 'magazine' ? 12 : 6;
+	const dynamicLimit = preferences.layout === 'magazine' ? 21 : 12;
 
 	const [{ data }] = useQuery({
 		query: HomePagePostsDocument,
@@ -233,7 +233,7 @@ export const getStaticProps = async () => {
 
 	const subtractValue = publication.pinnedPost ? 1 : 0;
 	const initialLimit =
-		publication.preferences.layout === 'magazine' ? 12 - subtractValue : 6 - subtractValue;
+		publication.preferences.layout === 'magazine' ? 20 - subtractValue : 6 - subtractValue;
 
 	const homePagePostsVariables: HomePagePostsQueryVariables = {
 		host,
