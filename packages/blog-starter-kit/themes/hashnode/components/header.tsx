@@ -9,6 +9,8 @@ import PublicationNavLinks from './publication-nav-links';
 import PublicationSocialLinks from './publication-social-links';
 import WhatsAppButton from './whatsapp';
 import YouTubeButton from './youtube';
+import { useRef, useState } from 'react';
+import TryOurCourseModal from './TryOurCourseModal';
 
 type Props = {
 	currentMenuId?: string | null;
@@ -18,8 +20,16 @@ type Props = {
 export const Header = (props: Props) => {
 	const { currentMenuId, isHome } = props;
 	const { publication } = useAppContext();
+	const [showTryModal, setShowTryModal] = useState(true);
+	const tryModalDismissed = useRef(false);
+
+	const handleTryModalClose = () => {
+		setShowTryModal(false);
+		tryModalDismissed.current = true; // Persist modal dismissal state
+	};
 
 	return (
+		<>
 		<header
 			className="blog-header relative z-50 w-full border-b border-black/10 bg-white bg-opacity-70 dark:border-white/10 dark:bg-slate-900 dark:bg-opacity-70"
 		>
@@ -84,5 +94,7 @@ export const Header = (props: Props) => {
 				</div>
 			</div>
 		</header>
+		{showTryModal && <TryOurCourseModal onClose={handleTryModalClose} />}
+		</>
 	);
 };
