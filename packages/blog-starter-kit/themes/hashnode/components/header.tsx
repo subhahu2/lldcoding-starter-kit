@@ -35,7 +35,7 @@ export const Header = (props: Props) => {
 		>
 			<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
-      				<span>🎉 Limited Time Offer: Get <b>150rs off</b> on all course till 23th FEB! Use code: <b> 21FEB25 </b> at checkout 🎉</span>
+      				<span>🎉 Limited Time Offer: Get <b>200rs off</b> on our lld course till 15th March! Use code: <b> DISCOUNT200 </b> at checkout 🎉</span>
    	 			</div>
 			</div>
 
