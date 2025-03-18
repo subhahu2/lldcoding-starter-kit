@@ -100,7 +100,7 @@ export const Header = (props: Props) => {
 				</div>
 			</div>
 		</header>
-		{showTryModal && <TryOurCourseModal onClose={handleTryModalClose} />}
+		{/* {showTryModal && <TryOurCourseModal onClose={handleTryModalClose} />} */}
 		</>
 	);
 };
