@@ -38,7 +38,7 @@ interface ArticleContentProps {
   }, []);
 
   // Show sign-in prompt if the user has viewed more than 2 articles and hasn't signed in
-  if (articleViews > 4 && !hasSignedIn) {
+  if (articleViews > 2 && !hasSignedIn) {
     return <SignInPrompt onSignIn={() => setHasSignedIn(true)} />;
   }
 
@@ -52,7 +52,6 @@ interface ArticleContentProps {
           __html: memoizedPostContent,
         }}
       />
-      <p>Ujjwal Jain</p>
     </>
   );
 };

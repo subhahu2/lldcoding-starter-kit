@@ -5,6 +5,7 @@ import { twJoin } from 'tailwind-merge';
 import moment from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import localizedFormat from 'dayjs/plugin/localizedFormat';
+import ArticleContent from './ArticleContent';
 
 import {
   BookOpenSVG,
@@ -164,15 +165,18 @@ function PostView(props: any) {
 
                 <div id="post-content-parent" className="relative mb-10 pb-14">
                     {memoizedPostContent && (
-                    <div
-                        id="post-content-wrapper"
-                        ref={postContentEle}
-                        className="prose prose-lg mx-auto mb-10 min-h-30 break-words dark:prose-dark xl:prose-xl"
-                        // eslint-disable-next-line react/no-danger
-                        dangerouslySetInnerHTML={{
-                        __html: memoizedPostContent,
-                        }}
-                    />
+                            <>
+								{/* <div
+									id="post-content-wrapper"
+									ref={postContentEle}
+									className="prose prose-lg min-h-30 dark:prose-dark xl:prose-xl mx-auto mb-10 break-words"
+									// eslint-disable-next-line react/no-danger
+									dangerouslySetInnerHTML={{
+										__html: memoizedPostContent,
+									}}
+								/> */}
+								<ArticleContent memoizedPostContent={memoizedPostContent} />
+							</>
                     )}
                 </div>
 
