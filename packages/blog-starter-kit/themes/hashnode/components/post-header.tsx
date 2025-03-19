@@ -5,6 +5,8 @@ import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { twJoin } from 'tailwind-merge';
+import ArticleContent from './ArticleContent'; // Adjust the path as needed
+
 
 import { resizeImage } from '@starter-kit/utils/image';
 // @ts-ignore
@@ -270,7 +272,8 @@ export const PostHeader = ({ post, morePosts }: Props) => {
 
 						<div id="post-content-parent" className="relative mb-10 pb-14">
 							{memoizedPostContent && (
-								<div
+								<>
+								{/* <div
 									id="post-content-wrapper"
 									ref={postContentEle}
 									className="prose prose-lg min-h-30 dark:prose-dark xl:prose-xl mx-auto mb-10 break-words"
@@ -278,7 +281,9 @@ export const PostHeader = ({ post, morePosts }: Props) => {
 									dangerouslySetInnerHTML={{
 										__html: memoizedPostContent,
 									}}
-								/>
+								/> */}
+								<ArticleContent memoizedPostContent={memoizedPostContent} />
+								</>
 							)}
 
 							{/* {props.isPublicationPost && renderPinnedWidgets(props.widgets, 'bottom')} */}
