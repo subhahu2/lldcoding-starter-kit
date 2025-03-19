@@ -42,7 +42,7 @@ const SignInPrompt = ({ onSignIn }) => {
           Sign In with Google
         </button>
 
-        {/* Sign Up Link */}
+        {/* Sign Up Link 
         <p className="text-gray-500 text-sm">
           Don’t have an account?{' '}
           <span
@@ -52,6 +52,7 @@ const SignInPrompt = ({ onSignIn }) => {
             Sign up
           </span>
         </p>
+        */}
       </div>
     </div>
   );

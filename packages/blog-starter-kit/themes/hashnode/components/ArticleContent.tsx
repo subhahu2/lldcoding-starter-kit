@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import SignInPrompt from './SignInPrompt';
 import { auth } from './firebase';
 
-const ArticleContent = ({ memoizedPostContent }) => {
+interface ArticleContentProps {
+    memoizedPostContent: string;  // or another specific type
+}
+  
+  const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) => {
   const [hasSignedIn, setHasSignedIn] = useState(false);
   const [articleViews, setArticleViews] = useState(0);
 
