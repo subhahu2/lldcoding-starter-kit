@@ -29,7 +29,7 @@ interface ArticleContentProps {
 
   // Update article views in local storage
   React.useEffect(() => {
-    localStorage.setItem('articleViews', articleViews);
+    localStorage.setItem('articleViews', articleViews.toString());
   }, [articleViews]);
 
   // Increment article views when the component mounts

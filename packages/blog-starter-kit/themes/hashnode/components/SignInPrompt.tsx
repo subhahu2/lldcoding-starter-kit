@@ -1,7 +1,11 @@
 import React from 'react';
 import { auth, googleProvider, signInWithPopup } from './firebase'; // Import Firebase auth and provider
 
-const SignInPrompt = ({ onSignIn }) => {
+interface MyComponentProps {
+  onSignIn: () => void;  // Function that takes no arguments and returns void
+}
+
+const SignInPrompt: React.FC<MyComponentProps> =  ({ onSignIn }) => {
   const handleGoogleSignIn = async () => {
     try {
       // Sign in with Google using a popup
