@@ -38,7 +38,7 @@ interface ArticleContentProps {
   }, []);
 
   // Show sign-in prompt if the user has viewed more than 2 articles and hasn't signed in
-  if (articleViews > 2 && !hasSignedIn) {
+  if (articleViews > 1 && !hasSignedIn) {
     return <SignInPrompt onSignIn={() => setHasSignedIn(true)} />;
   }
 
