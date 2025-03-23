@@ -1,4 +1,6 @@
 import { RequiredStaticPageFieldsFragment } from '../generated/graphql';
+import LLDProblemSheet from './ProblemSheet';
+import ArticleContent from './ArticleContent';
 
 type Props = {
   pageContent: RequiredStaticPageFieldsFragment;
@@ -6,6 +8,14 @@ type Props = {
 
 function StaticPageContent(props: Props) {
   const { content, title } = props.pageContent;
+
+  // if(title == "LLD Problem Sheet") {
+  //   return (
+  //     <>
+  //     <LLDProblemSheet />
+  //     </>
+  //   );
+  // }
 
   return (
     <div className={`blog-page-card pb-32`}>
@@ -17,11 +27,18 @@ function StaticPageContent(props: Props) {
         >
           {title}
         </h1>
+
+        {title != "LLD Problem Sheet" && (
         <div
           dangerouslySetInnerHTML={{
             __html: content.html,
           }}
         />
+        )}
+
+        {title == "LLD Problem Sheet" && content.html && (
+								<ArticleContent memoizedPostContent={content.html} />
+				)}
       </div>
     </div>
   );
