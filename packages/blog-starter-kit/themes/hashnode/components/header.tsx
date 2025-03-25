@@ -33,11 +33,11 @@ export const Header = (props: Props) => {
 		<header
 			className="blog-header relative z-50 w-full border-b border-black/10 bg-white bg-opacity-70 dark:border-white/10 dark:bg-slate-900 dark:bg-opacity-70"
 		>
-			{/* <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
+			<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
-      				<span>🎉 Limited Time Offer: Get <b>200rs off</b> on our lld course till 15th March! Use code: <b> DISCOUNT200 </b> at checkout 🎉</span>
+      				<span>🎉 Limited Time Offer: Get <b>300rs off</b> on our lld course till 31th March! Use code: <b> MARCH300 </b> at checkout 🎉</span>
    	 			</div>
-			</div> */}
+			</div>
 
 			<div className="container mx-auto px-2 md:px-4 2xl:px-10">
 				<div className="relative z-40 flex flex-row items-center justify-between pb-2 pt-8 md:mb-4">
