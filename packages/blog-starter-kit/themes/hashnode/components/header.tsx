@@ -11,6 +11,7 @@ import WhatsAppButton from './whatsapp';
 import YouTubeButton from './youtube';
 import { useRef, useState } from 'react';
 import TryOurCourseModal from './TryOurCourseModal';
+import AISignupModal from './AISignupModal';
 
 type Props = {
 	currentMenuId?: string | null;
@@ -100,7 +101,7 @@ export const Header = (props: Props) => {
 				</div>
 			</div>
 		</header>
-		{showTryModal && <TryOurCourseModal onClose={handleTryModalClose} />}
+		{showTryModal && <AISignupModal onClose={handleTryModalClose} />}
 		</>
 	);
 };
