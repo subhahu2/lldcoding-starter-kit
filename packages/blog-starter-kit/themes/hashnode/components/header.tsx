@@ -101,7 +101,7 @@ export const Header = (props: Props) => {
 				</div>
 			</div>
 		</header>
-		{/* {showTryModal && <AISignupModal onClose={handleTryModalClose} />} */}
+		{showTryModal && <AISignupModal onClose={handleTryModalClose} />}
 		</>
 	);
 };
