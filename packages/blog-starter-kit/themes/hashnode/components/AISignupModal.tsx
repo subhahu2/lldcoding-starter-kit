@@ -11,7 +11,7 @@ const AISignupModal: React.FC<AISignupModalProps> = ({ onClose }) => {
     setIsLoading(true);
     try {
       // Track the signup attempt (optional)
-      await fetch('https://interview.lldcoding.com/api/hitCount', { method: 'GET' });
+      await fetch('/api/track-signup', { method: 'POST' });
       
       // Redirect to signup page
       window.location.href = 'https://tiny.outlier.ai/y8xrz4ck';
