@@ -92,7 +92,7 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 				</div>
 			</div>
 		</div>
-		{/* {showTryModal && <TryOurCourseModal onClose={handleTryModalClose} />} */}
+		{showTryModal && <TryOurCourseModal onClose={handleTryModalClose} />}
 		</>
 	);
 });

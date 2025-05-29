@@ -36,7 +36,7 @@ export const Header = (props: Props) => {
 		>
 			<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
-      				<span>🎉 Limited Time Offer: Get <b>200rs off</b> on our lld course till 01 May 2025! Use code: <b> TWOOFF </b> at checkout 🎉</span>
+      				<span>🎉 Limited Time Offer: Get <b>200rs off</b> on our lld course till 30 May 2025! Use code: <b> JUSTFOR2DAY </b> at checkout 🎉</span>
    	 			</div>
 			</div>
 
@@ -101,7 +101,7 @@ export const Header = (props: Props) => {
 				</div>
 			</div>
 		</header>
-		{/* {showTryModal && <AISignupModal onClose={handleTryModalClose} />} */}
+		{showTryModal && <TryOurCourseModal onClose={handleTryModalClose} />}
 		</>
 	);
 };
