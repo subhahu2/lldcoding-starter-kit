@@ -38,11 +38,11 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 
 	return (
 		<>
-		<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
+		{/* <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
       				<span>🎉 Limited Time Offer: Get <b>200rs off</b> on our lld course till 30 May 2025! Use code: <b> JUSTFOR2DAY </b> at checkout 🎉</span>
    	 			</div>
-			</div>
+			</div> */}
 		<div className="container mx-auto px-2 md:px-4 md:py-1 2xl:px-10">
 			<div className="relative z-40 flex flex-row items-center justify-between pb-2 pt-8 md:py-4">
 				<div
