@@ -24,7 +24,7 @@ type Props = {
 
 const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 	const { publication } = props;
-	const [showTryModal, setShowTryModal] = useState(true);
+	const [showTryModal, setShowTryModal] = useState(false);
 	const tryModalDismissed = useRef(false);
 
 	const handleTryModalClose = () => {

@@ -21,7 +21,7 @@ type Props = {
 export const Header = (props: Props) => {
 	const { currentMenuId, isHome } = props;
 	const { publication } = useAppContext();
-	const [showTryModal, setShowTryModal] = useState(true);
+	const [showTryModal, setShowTryModal] = useState(false);
 	const tryModalDismissed = useRef(false);
 
 	const handleTryModalClose = () => {
