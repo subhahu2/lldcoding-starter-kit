@@ -40,7 +40,7 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 		<>
 		<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
-      				<span>🎉 Limited Time Offer: Get <b>300rs off</b> on our lld course till 14th June 2025! Use code: <b> JUNE300 </b> at checkout 🎉</span>
+      				<span>BIG DROP | 🎉 Limited Time Offer: Get <b>400rs off</b> on our lld course for today! Use code: <b> BIGDROP </b> at checkout 🎉</span>
    	 			</div>
 			</div>
 		<div className="container mx-auto px-2 md:px-4 md:py-1 2xl:px-10">
