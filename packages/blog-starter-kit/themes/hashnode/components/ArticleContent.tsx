@@ -1,45 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SignInPrompt from './SignInPrompt';
 import { auth } from './firebase';
+import ArticleLimitModal from './ArticleLimitModal';
 
 interface ArticleContentProps {
-    memoizedPostContent: string;  // or another specific type
+    memoizedPostContent: string;
 }
-  
-  const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) => {
+
+const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) => {
   const [hasSignedIn, setHasSignedIn] = useState(false);
   const [articleViews, setArticleViews] = useState(0);
+  const [showLimitModal, setShowLimitModal] = useState(false);
+  const [hasMounted, setHasMounted] = useState(false);
 
-  // Check if the user is already signed in
-  React.useEffect(() => {
+  // Only run on client
+  useEffect(() => {
+    setHasMounted(true);
+  }, []);
+
+  useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setHasSignedIn(true);
       }
     });
-
-    return () => unsubscribe(); // Cleanup subscription
+    return () => unsubscribe();
   }, []);
 
-  // Load article views from local storage on component mount
-  React.useEffect(() => {
-    const views = localStorage.getItem('articleViews') || 0;
-    setArticleViews(Number(views));
-  }, []);
+  useEffect(() => {
+    if (hasMounted) {
+      const views = Number(localStorage.getItem('articleViews') || 0) + 1;
+      setArticleViews(views);
+      localStorage.setItem('articleViews', views.toString());
+    }
+  }, [hasMounted]);
 
-  // Update article views in local storage
-  React.useEffect(() => {
-    localStorage.setItem('articleViews', articleViews.toString());
+  useEffect(() => {
+    if (articleViews > 10) setShowLimitModal(true);
   }, [articleViews]);
 
-  // Increment article views when the component mounts
-  React.useEffect(() => {
-    setArticleViews((prevViews) => prevViews + 1);
-  }, []);
+  if (!hasMounted) return null; // Prevent hydration mismatch
 
   // Show sign-in prompt if the user has viewed more than 2 articles and hasn't signed in
   if (articleViews > 1 && !hasSignedIn) {
     return <SignInPrompt onSignIn={() => setHasSignedIn(true)} />;
+  }
+
+  if (showLimitModal) {
+    return <ArticleLimitModal onClose={() => setShowLimitModal(false)} />;
   }
 
   return (
