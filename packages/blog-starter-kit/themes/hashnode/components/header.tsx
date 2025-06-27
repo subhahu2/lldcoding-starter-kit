@@ -21,7 +21,7 @@ type Props = {
 export const Header = (props: Props) => {
 	const { currentMenuId, isHome } = props;
 	const { publication } = useAppContext();
-	const [showTryModal, setShowTryModal] = useState(false);
+	const [showTryModal, setShowTryModal] = useState(true);
 	const tryModalDismissed = useRef(false);
 
 	const handleTryModalClose = () => {
@@ -34,11 +34,11 @@ export const Header = (props: Props) => {
 		<header
 			className="blog-header relative z-50 w-full border-b border-black/10 bg-white bg-opacity-70 dark:border-white/10 dark:bg-slate-900 dark:bg-opacity-70"
 		>
-			<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
+			{/* <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
       				<span>BIG DROP | 🎉 Limited Time Offer: Get <b>400rs off</b> on our lld course for today! Use code: <b> BIGDROP </b> at checkout 🎉</span>
    	 			</div>
-			</div>
+			</div> */}
 
 			<div className="container mx-auto px-2 md:px-4 2xl:px-10">
 				<div className="relative z-40 flex flex-row items-center justify-between pb-2 pt-8 md:mb-4">
