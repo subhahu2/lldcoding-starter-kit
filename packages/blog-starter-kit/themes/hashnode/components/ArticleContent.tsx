@@ -46,7 +46,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
     return <SignInPrompt onSignIn={() => setHasSignedIn(true)} />;
   }
 
-  if (showLimitModal) {
+  if (articleViews > 5 || showLimitModal) {
     return <ArticleLimitModal onClose={() => setShowLimitModal(false)} />;
   }
 
