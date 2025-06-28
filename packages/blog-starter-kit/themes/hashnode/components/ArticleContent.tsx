@@ -7,8 +7,11 @@ interface ArticleContentProps {
     memoizedPostContent: string;
 }
 
+const PAID_EMAIL = ['nawazmohtashim.nm@gmail.com', 'coderssubhahu@gmail.com'];
+
 const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) => {
   const [hasSignedIn, setHasSignedIn] = useState(false);
+  const [userEmail, setUserEmail] = useState<string | null>(null);
   const [articleViews, setArticleViews] = useState(0);
   const [showLimitModal, setShowLimitModal] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
@@ -22,6 +25,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setHasSignedIn(true);
+        setUserEmail(user.email);
       }
     });
     return () => unsubscribe();
@@ -44,6 +48,20 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
   // Show sign-in prompt if the user has viewed more than 2 articles and hasn't signed in
   if (articleViews > 1 && !hasSignedIn) {
     return <SignInPrompt onSignIn={() => setHasSignedIn(true)} />;
+  }
+
+  // If user is signed in and email matches, allow unlimited access
+  if (hasSignedIn && userEmail && PAID_EMAIL.includes(userEmail)) {
+    return (
+      <div
+        id="post-content-wrapper"
+        className="prose prose-lg min-h-30 dark:prose-dark xl:prose-xl mx-auto mb-10 break-words"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: memoizedPostContent,
+        }}
+      />
+    );
   }
 
   if (articleViews > 5 || showLimitModal) {
