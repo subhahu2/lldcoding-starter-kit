@@ -32,12 +32,12 @@ const ArticleLimitModal: React.FC<ArticleLimitModalProps> = ({ onClose }) => (
         >
           Subscribe for ₹49/month
         </a>
-        <button
+        {/* <button
           onClick={onClose}
           className="w-full py-2 rounded-lg font-semibold text-gray-700 border mt-2"
         >
           Close
-        </button>
+        </button> */}
       </div>
     </div>
   </div>
