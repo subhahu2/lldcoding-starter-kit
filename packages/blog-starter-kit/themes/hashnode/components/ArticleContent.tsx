@@ -40,7 +40,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
   }, [hasMounted]);
 
   useEffect(() => {
-    if (articleViews > 5) setShowLimitModal(true);
+    if (articleViews > 3) setShowLimitModal(true);
   }, [articleViews]);
 
   if (!hasMounted) return null; // Prevent hydration mismatch
