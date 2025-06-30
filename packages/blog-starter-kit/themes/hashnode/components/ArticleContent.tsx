@@ -34,7 +34,13 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           const data = docSnap.data();
-          setHasAccess(!!data.access); // expects { access: true }
+          // Check access and expiry
+          const hasValidAccess =
+            !!data.access &&
+            data.expiry &&
+            data.expiry.toDate &&
+            data.expiry.toDate() > new Date();
+          setHasAccess(hasValidAccess);
         } else {
           setHasAccess(false);
         }
