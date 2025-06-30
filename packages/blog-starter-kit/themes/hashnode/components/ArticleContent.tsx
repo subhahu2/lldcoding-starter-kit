@@ -7,7 +7,7 @@ interface ArticleContentProps {
     memoizedPostContent: string;
 }
 
-const PAID_EMAIL = ['mdshahbaz310@gmail.com', 'nawazmohtashim.nm@gmail.com', 'coderssubhahu@gmail.com'];
+const PAID_EMAIL = ['srujanpenta@gmail.com', 'mdshahbaz310@gmail.com', 'nawazmohtashim.nm@gmail.com', 'coderssubhahu@gmail.com'];
 
 const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) => {
   const [hasSignedIn, setHasSignedIn] = useState(false);
