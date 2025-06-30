@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import SignInPrompt from './SignInPrompt';
-import { auth } from './firebase';
+import { auth, db } from './firebase'; // Make sure db is your Firestore instance
+import { doc, getDoc } from 'firebase/firestore';
 import ArticleLimitModal from './ArticleLimitModal';
 
 interface ArticleContentProps {
     memoizedPostContent: string;
 }
 
-const PAID_EMAIL = ['srujanpenta@gmail.com', 'mdshahbaz310@gmail.com', 'nawazmohtashim.nm@gmail.com', 'coderssubhahu@gmail.com'];
-
 const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) => {
   const [hasSignedIn, setHasSignedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [userId, setUserId] = useState<string | null>(null);
+  const [hasAccess, setHasAccess] = useState<boolean>(false);
   const [articleViews, setArticleViews] = useState(0);
   const [showLimitModal, setShowLimitModal] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
@@ -22,10 +23,21 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
   }, []);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         setHasSignedIn(true);
         setUserEmail(user.email);
+        setUserId(user.uid);
+
+        // Fetch subscription status from Firestore
+        const docRef = doc(db, 'blog-subscription', user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setHasAccess(!!data.access); // expects { access: true }
+        } else {
+          setHasAccess(false);
+        }
       }
     });
     return () => unsubscribe();
@@ -50,8 +62,8 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
     return <SignInPrompt onSignIn={() => setHasSignedIn(true)} />;
   }
 
-  // If user is signed in and email matches, allow unlimited access
-  if (hasSignedIn && userEmail && PAID_EMAIL.includes(userEmail)) {
+  // If user is signed in and has access from Firestore, allow unlimited access
+  if (hasSignedIn && hasAccess) {
     return (
       <div
         id="post-content-wrapper"
