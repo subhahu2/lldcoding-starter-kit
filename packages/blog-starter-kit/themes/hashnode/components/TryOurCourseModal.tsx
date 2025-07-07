@@ -1,10 +1,30 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 type TryOurCourseModalProps = {
   onClose: () => void;
 };
 
 const TryOurCourseModal: React.FC<TryOurCourseModalProps> = ({ onClose }) => {
+  const [shouldShow, setShouldShow] = useState(true);
+
+  useEffect(() => {
+    const accessStr = localStorage.getItem('userAccess');
+    if (accessStr) {
+      try {
+        const accessObj = JSON.parse(accessStr);
+        if (
+          accessObj.hasAccess &&
+          accessObj.expiry &&
+          new Date(accessObj.expiry) > new Date()
+        ) {
+          setShouldShow(false);
+        }
+      } catch (e) {
+        // Ignore parse errors, show modal
+      }
+    }
+  }, []);
+
   const handleUpgrade = async () => {
     // API call to upgrade membership
     try {
@@ -16,6 +36,8 @@ const TryOurCourseModal: React.FC<TryOurCourseModalProps> = ({ onClose }) => {
       console.error('Error upgrading membership:', error);
     }
   };
+
+  if (!shouldShow) return null;
 
   return (
     <div className="inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
