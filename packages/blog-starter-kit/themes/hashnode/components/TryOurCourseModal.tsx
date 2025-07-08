@@ -5,7 +5,7 @@ type TryOurCourseModalProps = {
 };
 
 const TryOurCourseModal: React.FC<TryOurCourseModalProps> = ({ onClose }) => {
-  const [shouldShow, setShouldShow] = useState(true);
+  const [shouldShow, setShouldShow] = useState(false);
 
   useEffect(() => {
     const accessStr = localStorage.getItem('userAccess');
