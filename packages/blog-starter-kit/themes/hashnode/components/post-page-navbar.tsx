@@ -17,6 +17,7 @@ import PublicationLogo from './publication-logo';
 import WhatsAppButton from './whatsapp';
 import YouTubeButton from './youtube';
 import TryOurCourseModal from './TryOurCourseModal';
+import SubscriptionDaysCounter from './SubscriptionDaysCounter';
 
 type Props = {
 	publication: Pick<PublicationFragment, 'id' | 'title' | 'links' | 'url' | 'features' | 'isTeam' | 'author' | 'preferences'>;
@@ -43,6 +44,7 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
       				<span>BIG DROP | 🎉 Limited Time Offer: Get <b>400rs off</b> on our lld course for today! Use code: <b> BIGDROP </b> at checkout 🎉</span>
    	 			</div>
 			</div> */}
+		<SubscriptionDaysCounter />
 		<div className="container mx-auto px-2 md:px-4 md:py-1 2xl:px-10">
 			<div className="relative z-40 flex flex-row items-center justify-between pb-2 pt-8 md:py-4">
 				<div
