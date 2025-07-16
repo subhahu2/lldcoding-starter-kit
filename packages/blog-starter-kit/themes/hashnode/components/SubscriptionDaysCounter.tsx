@@ -42,6 +42,7 @@ const SubscriptionDaysCounter = () => {
       <div className="marquee">
         <span>
           Your subscription ends in <b>{daysLeft} day{daysLeft !== 1 ? 's' : ''}</b>. Renew now to continue access!
+           Click here to <a href="https://payments.cashfree.com/forms?code=lldcoding-blogs-subscription" className="underline">renew</a>.
         </span>
       </div>
     </div>
