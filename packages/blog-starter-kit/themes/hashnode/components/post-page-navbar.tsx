@@ -18,6 +18,7 @@ import WhatsAppButton from './whatsapp';
 import YouTubeButton from './youtube';
 import TryOurCourseModal from './TryOurCourseModal';
 import SubscriptionDaysCounter from './SubscriptionDaysCounter';
+import UserAuthThumbnail from './UserAuthThumbnail';
 
 type Props = {
 	publication: Pick<PublicationFragment, 'id' | 'title' | 'links' | 'url' | 'features' | 'isTeam' | 'author' | 'preferences'>;
@@ -84,6 +85,9 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 					<WhatsAppButton />
 					<YouTubeButton />
 					<Button as="a" href="https://interview.lldcoding.com/" className="bg-brand-orange" type="primary" label="Buy Course" />
+					<div className="hidden md:block ml-2"> {/* Added margin for separation */}
+        				<UserAuthThumbnail />
+      				</div>
 				</div>
 			</div>
 

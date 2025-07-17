@@ -13,6 +13,7 @@ import { useRef, useState } from 'react';
 import TryOurCourseModal from './TryOurCourseModal';
 import AISignupModal from './AISignupModal';
 import SubscriptionDaysCounter from './SubscriptionDaysCounter';
+import UserAuthThumbnail from './UserAuthThumbnail';
 
 type Props = {
 	currentMenuId?: string | null;
@@ -67,6 +68,9 @@ export const Header = (props: Props) => {
 <WhatsAppButton />
 						<YouTubeButton />
 						<Button as="a" href="https://interview.lldcoding.com/" className="bg-brand-orange"  type="primary" label="Buy Course" />
+						<div className="hidden md:block ml-2">
+        					<UserAuthThumbnail />
+      					</div>
 					</div>
 				</div>
 
