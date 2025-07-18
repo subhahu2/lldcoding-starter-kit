@@ -42,7 +42,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
             data.expiry.toDate() > new Date();
           setHasAccess(hasValidAccess);
           
-          const expiry = new Date(Date.now() + 3 * 24 * 60 * 60 * 1000).toISOString();
+          const expiry = data.expiry.toDate().toISOString();
           // Store in localStorage
           localStorage.setItem(
             'userAccess',
