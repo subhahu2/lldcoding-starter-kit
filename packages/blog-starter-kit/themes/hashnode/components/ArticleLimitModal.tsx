@@ -94,10 +94,10 @@ const ArticleLimitModal: React.FC<ArticleLimitModalProps> = ({ onClose }) => (
               <span>❌</span> <span>No IDE or diagrams</span>
             </li>
             <li className="flex items-start gap-2">
-              <span>❌</span> <span>Only current blogs</span>
+              <span>✅</span> <span>Only blogs</span>
             </li>
             <li className="flex items-start gap-2">
-              <span>❌</span> <span>No future updates</span>
+              <span>❌</span> <span>No Course Content</span>
             </li>
           </ul>
 
