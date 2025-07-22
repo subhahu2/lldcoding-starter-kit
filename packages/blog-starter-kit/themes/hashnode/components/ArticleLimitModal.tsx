@@ -30,7 +30,7 @@ const ArticleLimitModal: React.FC<ArticleLimitModalProps> = ({ onClose }) => (
         <div className="text-5xl mb-3" style={{ color: 'rgb(255 161 22)' }}>🚫</div>
         <h2 className="text-2xl font-bold mb-2" style={{ color: 'rgb(255 161 22)' }}>Article Limit Reached</h2>
         <p className="text-gray-600">
-          You've reached your free article limit.<br />
+          You&apos;ve reached your free article limit.<br />
           To continue reading, please buy our course or subscribe.
         </p>
       </div>
