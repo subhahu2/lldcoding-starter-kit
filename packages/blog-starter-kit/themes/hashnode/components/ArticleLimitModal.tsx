@@ -94,7 +94,7 @@ const ArticleLimitModal: React.FC<ArticleLimitModalProps> = ({ onClose }) => (
               <span>❌</span> <span>No IDE or diagrams</span>
             </li>
             <li className="flex items-start gap-2">
-              <span>✅</span> <span>Only blogs</span>
+              <span>✅</span> <span>Only blogs with Partial Content</span>
             </li>
             <li className="flex items-start gap-2">
               <span>❌</span> <span>No Course Content</span>
@@ -106,7 +106,7 @@ const ArticleLimitModal: React.FC<ArticleLimitModalProps> = ({ onClose }) => (
             className="w-full py-2 md:py-3 rounded-lg font-semibold text-white text-center block hover:bg-indigo-600 transition-colors"
             style={{ backgroundColor: '#6366f1' }}
           >
-            Subscribe for ₹49/month
+            Subscribe for ₹99/month
           </a>
           
           <p className="text-xs md:text-sm text-center mt-2 text-gray-500">
