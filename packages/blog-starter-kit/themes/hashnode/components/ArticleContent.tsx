@@ -127,7 +127,25 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
     if(showLimitModal) {
       return <ArticleLimitModal onClose={handleCloseLimitModal} />;
     }
-    return null;
+    return (
+    <div className="flex items-center justify-center p-8 bg-gray-50 rounded-lg border border-gray-200">
+      <div className="text-center max-w-md">
+        <div className="text-4xl mb-4">🔒</div>
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">
+          Content Locked
+        </h3>
+        <p className="text-gray-600 mb-4">
+          You've reached your free article limit. Please subscribe to unlock more content.
+        </p>
+        <button
+          onClick={() => setShowLimitModal(true)}
+          className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+        >
+          Unlock Content
+        </button>
+      </div>
+    </div>
+  );
   }
 
   return postContent;
