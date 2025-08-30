@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import SignInPrompt from './SignInPrompt';
-import { auth, db } from './firebase'; // Make sure db is your Firestore instance
+import { auth, db } from './firebase';
 import { doc, getDoc } from 'firebase/firestore';
 import ArticleLimitModal from './ArticleLimitModal';
 
@@ -8,7 +9,17 @@ interface ArticleContentProps {
     memoizedPostContent: string;
 }
 
-const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) => {
+
+const LoadingSpinner = () => (
+  <div className="flex justify-center items-center min-h-[200px]" aria-label="Loading">
+    <svg className="animate-spin h-8 w-8 text-orange-500" viewBox="0 0 24 24">
+      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
+    </svg>
+  </div>
+);
+
+const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPostContent }) => {
   const [hasSignedIn, setHasSignedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
@@ -16,6 +27,7 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
   const [articleViews, setArticleViews] = useState(0);
   const [showLimitModal, setShowLimitModal] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // Only run on client
   useEffect(() => {
@@ -23,12 +35,13 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
   }, []);
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged(async (user) => {
+    let unsub: (() => void) | undefined;
+    setLoading(true);
+    unsub = auth.onAuthStateChanged(async (user) => {
       if (user) {
         setHasSignedIn(true);
         setUserEmail(user.email);
         setUserId(user.uid);
-
         // Fetch subscription status from Firestore
         const docRef = doc(db, 'blog-subscription', user.uid);
         const docSnap = await getDoc(docRef);
@@ -41,7 +54,6 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
             data.expiry.toDate &&
             data.expiry.toDate() > new Date();
           setHasAccess(hasValidAccess);
-          
           const expiry = data.expiry.toDate().toISOString();
           // Store in localStorage
           localStorage.setItem(
@@ -51,64 +63,73 @@ const ArticleContent: React.FC<ArticleContentProps> = ({ memoizedPostContent }) 
               expiry: expiry,
             })
           );
-
         } else {
           setHasAccess(false);
         }
+      } else {
+        setHasSignedIn(false);
+        setUserEmail(null);
+        setUserId(null);
+        setHasAccess(false);
       }
+      setLoading(false);
     });
-    return () => unsubscribe();
+    return () => { unsub && unsub(); };
   }, []);
 
   useEffect(() => {
     if (hasMounted) {
-      const views = Number(localStorage.getItem('articleViews') || 0) + 1;
-      setArticleViews(views);
-      localStorage.setItem('articleViews', views.toString());
+      const prevViews = Number(localStorage.getItem('articleViews') || 0);
+      const views = prevViews + 1;
+      if (views !== articleViews) {
+        setArticleViews(views);
+        localStorage.setItem('articleViews', views.toString());
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasMounted]);
 
   useEffect(() => {
-    if (articleViews > 5) setShowLimitModal(true);
-  }, [articleViews]);
+    if (articleViews > 5 && !showLimitModal) setShowLimitModal(true);
+  }, [articleViews, showLimitModal]);
+
+  const handleSignIn = useCallback(() => setHasSignedIn(true), []);
+  const handleCloseLimitModal = useCallback(() => setShowLimitModal(false), []);
+
+  // Memoize content for performance
+  const postContent = useMemo(() => (
+    <div
+      id="post-content-wrapper"
+      className="prose prose-lg min-h-30 dark:prose-dark xl:prose-xl mx-auto mb-10 break-words animate-fadeInUp"
+      // eslint-disable-next-line react/no-danger
+      dangerouslySetInnerHTML={{
+        __html: memoizedPostContent,
+      }}
+      aria-label="Article Content"
+      tabIndex={0}
+    />
+  ), [memoizedPostContent]);
 
   if (!hasMounted) return null; // Prevent hydration mismatch
+  if (loading) return <LoadingSpinner />;
 
   // Show sign-in prompt if the user has viewed more than 2 articles and hasn't signed in
   if (articleViews > 1 && !hasSignedIn) {
-    return <SignInPrompt onSignIn={() => setHasSignedIn(true)} />;
+    return <SignInPrompt onSignIn={handleSignIn} />;
   }
 
   // If user is signed in and has access from Firestore, allow unlimited access
   if (hasSignedIn && hasAccess) {
-    return (
-      <div
-        id="post-content-wrapper"
-        className="prose prose-lg min-h-30 dark:prose-dark xl:prose-xl mx-auto mb-10 break-words"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: memoizedPostContent,
-        }}
-      />
-    );
+    return postContent;
   }
 
   if (articleViews > 5 || showLimitModal) {
-    return <ArticleLimitModal onClose={() => setShowLimitModal(false)} />;
+    return <ArticleLimitModal onClose={handleCloseLimitModal} />;
   }
 
-  return (
-    <>
-      <div
-        id="post-content-wrapper"
-        className="prose prose-lg min-h-30 dark:prose-dark xl:prose-xl mx-auto mb-10 break-words"
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{
-          __html: memoizedPostContent,
-        }}
-      />
-    </>
-  );
-};
+  return postContent;
+});
+
+ArticleContent.displayName = 'ArticleContent';
 
 export default ArticleContent;
