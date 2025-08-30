@@ -1,11 +1,16 @@
-
 import React, { useCallback } from 'react';
+import { createPortal } from 'react-dom';
 
 type ArticleLimitModalProps = {
   onClose: () => void;
 };
 
 const ArticleLimitModal: React.FC<ArticleLimitModalProps> = React.memo(({ onClose }) => {
+  const backdropRef = React.useRef<HTMLDivElement>(null);
+  const handleBackdropClick = useCallback((e: React.MouseEvent) => {
+    if (e.target === backdropRef.current) onClose();
+  }, [onClose]);
+
   // Trap focus inside modal for accessibility
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -15,29 +20,28 @@ const ArticleLimitModal: React.FC<ArticleLimitModalProps> = React.memo(({ onClos
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [onClose]);
 
-  // Prevent background scroll
-  React.useEffect(() => {
-    const original = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => { document.body.style.overflow = original; };
-  }, []);
+  // Remove scroll lock for debugging
+  // React.useEffect(() => {
+  //   const original = document.body.style.overflow;
+  //   document.body.style.overflow = 'hidden';
+  //   return () => { document.body.style.overflow = original; };
+  // }, []);
 
-  // Click outside to close
-  const backdropRef = React.useRef<HTMLDivElement>(null);
-  const handleBackdropClick = useCallback((e: React.MouseEvent) => {
-    if (e.target === backdropRef.current) onClose();
-  }, [onClose]);
-
-  return (
+  return createPortal(
     <div
       ref={backdropRef}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 overflow-y-auto"
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/50 overflow-y-auto"
       aria-modal="true"
       role="dialog"
       tabIndex={-1}
       onClick={handleBackdropClick}
+      style={{ zIndex: 9999 }}
     >
-      <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto border border-orange-100 overflow-hidden relative animate-fadeInUp">
+      <div
+        className="bg-white rounded-2xl shadow-2xl max-w-md w-full mx-auto border border-orange-100 overflow-hidden relative animate-fadeInUp"
+        style={{ zIndex: 10000, pointerEvents: 'auto' }}
+        onClick={e => e.stopPropagation()}
+      >
         {/* Close button (top-right) */}
         <button
           onClick={onClose}
@@ -138,7 +142,8 @@ const ArticleLimitModal: React.FC<ArticleLimitModalProps> = React.memo(({ onClos
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    typeof window !== 'undefined' && document.body ? document.body : document.createElement('div')
   );
 });
 
