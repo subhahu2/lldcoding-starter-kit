@@ -135,7 +135,7 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
           Content Locked
         </h3>
         <p className="text-gray-600 mb-4">
-          You've reached your free article limit. Please subscribe to unlock more content.
+          You&apos;ve reached your free article limit. Please subscribe to unlock more content.
         </p>
         <button
           onClick={() => setShowLimitModal(true)}
