@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { forwardRef, useRef, useState } from 'react';
+import { forwardRef, useRef, useState, useEffect } from 'react';
 import { twJoin } from 'tailwind-merge';
 
 /* eslint-disable no-nested-ternary */
@@ -28,6 +28,32 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 	const { publication } = props;
 	const [showTryModal, setShowTryModal] = useState(true);
 	const tryModalDismissed = useRef(false);
+
+	// Auth and subscription state
+	const [hasSignedIn, setHasSignedIn] = useState(false);
+	const [subscriptionType, setSubscriptionType] = useState<string | null>(null);
+	const [orderId, setOrderId] = useState<string | null>(null);
+
+	useEffect(() => {
+		// Try to get user info from localStorage (same as header.tsx)
+		const userAccess = localStorage.getItem('userAccess');
+		if (userAccess) {
+			try {
+				const parsed = JSON.parse(userAccess);
+				setHasSignedIn(!!parsed.hasAccess);
+				setSubscriptionType(parsed.subscriptionType || null);
+				setOrderId(parsed.orderId || null);
+			} catch {
+				setHasSignedIn(false);
+				setSubscriptionType(null);
+				setOrderId(null);
+			}
+		} else {
+			setHasSignedIn(false);
+			setSubscriptionType(null);
+			setOrderId(null);
+		}
+	}, []);
 
 	const handleTryModalClose = () => {
 		setShowTryModal(false);
@@ -84,7 +110,14 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 					<HeaderBlogSearch publication={publication} />
 					<WhatsAppButton />
 					<YouTubeButton />
-					<Button as="a" href="https://interview.lldcoding.com/" className="bg-brand-orange" type="primary" label="Buy Course" />
+								{/* Show Buy Course if not signed in, else show Go to Dashboard if subscribed */}
+								{!hasSignedIn ? (
+									<Button as="a" href="https://interview.lldcoding.com/" className="bg-brand-orange" type="primary" label="Buy Course" />
+								) : (subscriptionType && orderId ? (
+									<Button as="a" href="https://interview.lldcoding.com/dashboard" className="bg-brand-orange" type="primary" label="Course" />
+								) : (
+									<Button as="a" href="https://interview.lldcoding.com/" className="bg-brand-orange" type="primary" label="Buy Course" />
+								))}
 					<div className="hidden md:block ml-2"> {/* Added margin for separation */}
         				<UserAuthThumbnail />
       				</div>

@@ -9,7 +9,7 @@ import PublicationNavLinks from './publication-nav-links';
 import PublicationSocialLinks from './publication-social-links';
 import WhatsAppButton from './whatsapp';
 import YouTubeButton from './youtube';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import TryOurCourseModal from './TryOurCourseModal';
 import AISignupModal from './AISignupModal';
 import SubscriptionDaysCounter from './SubscriptionDaysCounter';
@@ -22,9 +22,37 @@ type Props = {
 
 export const Header = (props: Props) => {
 	const { currentMenuId, isHome } = props;
+
 	const { publication } = useAppContext();
 	const [showTryModal, setShowTryModal] = useState(true);
 	const tryModalDismissed = useRef(false);
+
+	// Auth and subscription state
+	const [hasSignedIn, setHasSignedIn] = useState(false);
+	const [subscriptionType, setSubscriptionType] = useState<string | null>(null);
+	const [orderId, setOrderId] = useState<string | null>(null);
+
+	useEffect(() => {
+		// Try to get user info from localStorage (same as ArticleContent)
+		const userAccess = localStorage.getItem('userAccess');
+		if (userAccess) {
+			try {
+				const parsed = JSON.parse(userAccess);
+				console.log('User access from localStorage:', parsed);
+				setHasSignedIn(!!parsed.hasAccess);
+				setSubscriptionType(parsed.subscriptionType || null);
+				setOrderId(parsed.orderId || null);
+			} catch {
+				setHasSignedIn(false);
+				setSubscriptionType(null);
+				setOrderId(null);
+			}
+		} else {
+			setHasSignedIn(false);
+			setSubscriptionType(null);
+			setOrderId(null);
+		}
+	}, []);
 
 	const handleTryModalClose = () => {
 		setShowTryModal(false);
@@ -67,7 +95,14 @@ export const Header = (props: Props) => {
 						<HeaderBlogSearch publication={publication} />
 <WhatsAppButton />
 						<YouTubeButton />
-						<Button as="a" href="https://interview.lldcoding.com/" className="bg-brand-orange"  type="primary" label="Buy Course" />
+									{/* Show Buy Course if not signed in, else show Go to Dashboard if subscribed */}
+									{!hasSignedIn ? (
+										<Button as="a" href="https://interview.lldcoding.com/" className="bg-brand-orange" type="primary" label="Buy Course" />
+									) : (subscriptionType && orderId ? (
+										<Button as="a" href="https://interview.lldcoding.com/dashboard" className="bg-brand-orange" type="primary" label="Course" />
+									) : (
+										<Button as="a" href="https://interview.lldcoding.com/" className="bg-brand-orange" type="primary" label="Buy Course" />
+									))}
 						<div className="hidden md:block ml-2">
         					<UserAuthThumbnail />
       					</div>

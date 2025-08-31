@@ -61,6 +61,8 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
             JSON.stringify({
               hasAccess: hasValidAccess,
               expiry: expiry,
+              subscriptionType: data.subscriptionType || null,
+              orderId: data.orderId || null,
             })
           );
         } else {
