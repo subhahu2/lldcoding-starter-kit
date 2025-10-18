@@ -64,11 +64,11 @@ export const Header = (props: Props) => {
 		<header
 			className="blog-header relative z-50 w-full border-b border-black/10 bg-white bg-opacity-70 dark:border-white/10 dark:bg-slate-900 dark:bg-opacity-70"
 		>
-			{/* <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
+			<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
-      				<span>BIG DROP | 🎉 Limited Time Offer: Get <b>10% OFF</b> on lld course for today! Use code: <b> 10OFF </b> at checkout 🎉</span>
+      				<span>BIG DROP | 🎉 Limited Time Offer: Get <b>300 Rs OFF</b> on lld course for today! Use code: <b> DIWALI1710 </b> at checkout 🎉</span>
    	 			</div>
-			</div> */}
+			</div>
 			<SubscriptionDaysCounter />
 
 			<div className="container mx-auto px-2 md:px-4 2xl:px-10">
