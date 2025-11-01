@@ -66,7 +66,7 @@ export const Header = (props: Props) => {
 		>
 			<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
-      				<span>BIG DROP | 🎉 Limited Time Offer: Get <b>300 Rs OFF</b> on lifetime lld course for today! Use code: <b> DIWALI1710 </b> at checkout 🎉</span>
+      				<span>BIG DROP | 🎉 Limited Time Offer: Get <b>300 Rs OFF</b> on lifetime lld course for today! Use code: <b> NOV300 </b> at checkout 🎉</span>
    	 			</div>
 			</div>
 			<SubscriptionDaysCounter />
