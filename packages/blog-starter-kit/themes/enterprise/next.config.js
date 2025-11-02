@@ -65,7 +65,9 @@ const config = {
 		scrollRestoration: true,
 	},
 	images: {
-		unoptimized: true,
+		// Enable Next.js Image Optimization for better LCP (serve optimized sizes & formats).
+		// Set `unoptimized: false` so Next's image optimizer runs for remotePatterns below.
+		unoptimized: false,
 		remotePatterns: [
 			{
 				protocol: 'https',

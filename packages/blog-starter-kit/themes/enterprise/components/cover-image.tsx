@@ -18,8 +18,10 @@ export const CoverImage = ({ title, src, slug, priority = false }: Props) => {
 				alt={`Cover Image for ${title}`}
 				className="w-full rounded-md border object-cover hover:opacity-90 dark:border-neutral-800"
 				fill
-				unoptimized
+				// let Next.js optimize remote images (must be allowed in next.config.js)
 				priority={priority}
+				// provide a reasonable sizes hint so the optimizer can pick the best image
+				sizes="(min-width: 1280px) 50vw, 100vw"
 			/>
 		</div>
 	);
