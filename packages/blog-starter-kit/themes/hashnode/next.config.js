@@ -60,12 +60,17 @@ const getRedirectionRules = async () => {
  */
 const config = {
 	transpilePackages: ['@starter-kit/utils'],
+	swcMinify: true,
+	compress: true,
+	experimental: {
+    	optimizeCss: true, // or use next-optimized-css plugin
+  	},
 	basePath: getBasePath(),
 	experimental: {
 		scrollRestoration: true,
 	},
 	images: {
-		unoptimized: true,
+		unoptimized: false,
 		remotePatterns: [
 			{
 				protocol: 'https',
