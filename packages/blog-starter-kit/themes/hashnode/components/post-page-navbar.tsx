@@ -71,6 +71,11 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
       				<span>BIG DROP | 🎉 Limited Time Offer: Get <b>200 Rs OFF off</b> on our lifetime lld course for today! Use code: <b> NOV200 </b> at checkout 🎉</span>
    	 			</div>
 		</div>
+		<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
+    			<div className="marquee">
+      				<span>Course Price Increase Alert From <b> 1st Jan 2026 </b></span>
+   	 			</div>
+		</div>
 		<SubscriptionDaysCounter />
 		<div className="container mx-auto px-2 md:px-4 md:py-1 2xl:px-10">
 			<div className="relative z-40 flex flex-row items-center justify-between pb-2 pt-8 md:py-4">
