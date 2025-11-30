@@ -66,11 +66,11 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 
 	return (
 		<>
-		<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
+		{/* <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
       				<span>BIG DROP | 🎉 Limited Time Offer: Get <b>200 Rs OFF off</b> on our lifetime lld course for today! Use code: <b> NOV200 </b> at checkout 🎉</span>
    	 			</div>
-		</div>
+		</div> */}
 		<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
       				<span>Course Price Increase Alert From <b> 1st Jan 2026 </b></span>
