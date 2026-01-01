@@ -69,11 +69,11 @@ export const Header = (props: Props) => {
       				<span>BIG DROP | 🎉 Limited Time Offer: Get <b>200 Rs OFF</b> on lifetime lld course for today! Use code: <b> NOV200 </b> at checkout 🎉</span>
    	 			</div>
 			</div> */}
-			<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
+			{/* <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
       				<span>🚨 IMPORTANT ALERT: All LLDcoding Course Prices (including Lifetime & Extensions) will INCREASE by ₹300 starting 1st January 2026! Enroll NOW to lock in current pricing</span>
    	 			</div>
-			</div>
+			</div> */}
 			<SubscriptionDaysCounter />
 
 			<div className="container mx-auto px-2 md:px-4 2xl:px-10">
