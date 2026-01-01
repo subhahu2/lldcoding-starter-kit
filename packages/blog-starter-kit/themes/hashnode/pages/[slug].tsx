@@ -238,11 +238,14 @@ export const getStaticProps: GetStaticProps<Props, Params> = async ({ params }) 
 
 	const pageData = await request(endpoint, PageByPublicationDocument, { host, slug });
 
-	if (pageData.publication?.staticPage) {
+	if (pageData.publication?.staticPage || slug === 'lld-problems-sheet') {
 		return {
 			props: {
 				type: 'page',
-				page: pageData.publication.staticPage,
+				page: pageData.publication?.staticPage || {
+					slug: 'lld-problems-sheet',
+					title: 'LLD Problem Sheet',
+				},
 				publication: pageData.publication,
 			},
 			revalidate: 1,
