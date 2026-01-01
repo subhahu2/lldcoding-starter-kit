@@ -98,7 +98,7 @@ const ArticleLimitModal: React.FC<ArticleLimitModalProps> = React.memo(({ onClos
               target="_blank"
               rel="noopener noreferrer"
             >
-              Buy Now - ₹2100 <span className="text-amber-100">(Only ₹175/month)</span>
+              Buy Now - ₹2400 <span className="text-amber-100">(Only ₹199/month)</span>
             </a>
             <p className="text-xs md:text-sm text-center mt-2 text-gray-600">
               One-time payment • No hidden charges
@@ -134,10 +134,10 @@ const ArticleLimitModal: React.FC<ArticleLimitModalProps> = React.memo(({ onClos
               target="_blank"
               rel="noopener noreferrer"
             >
-              Subscribe for ₹99/month
+              Subscribe for ₹149/month
             </a>
             <p className="text-xs md:text-sm text-center mt-2 text-gray-500">
-              Auto-renews • Cancel anytime
+              No Auto Renew
             </p>
           </div>
         </div>
