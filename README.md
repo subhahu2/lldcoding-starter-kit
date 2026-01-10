@@ -1,3 +1,69 @@
+GOOD CTA to used later
+
+
+<div className="mt-12 grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto">
+  {/* 360 Days Plan */}
+  <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-8 flex flex-col">
+    <h3 className="text-2xl font-bold text-gray-900 mb-4">360 Days Access</h3>
+    <div className="flex items-center gap-4 mb-6">
+      <span className="text-2xl text-gray-400 line-through">₹3600</span>
+      <span className="text-4xl font-extrabold text-orange-600">₹2400</span>
+      <span className="text-xl font-bold text-green-600">(₹1200 OFF)</span>
+    </div>
+    <ul className="text-gray-700 space-y-3 mb-8 flex-1">
+      <li>Full access for 360 days</li>
+      <li>30+ real interview problems (Java & C++)</li>
+      <li>Videos, code, diagrams & monthly updates</li>
+      <li>Priority Q&A support</li>
+    </ul>
+    <a
+      href="https://interview.lldcoding.com?plan=360days"
+      className="mt-auto bg-orange-500 text-white text-center py-4 px-8 rounded-xl font-bold text-lg hover:bg-orange-600 transition"
+    >
+      Get 360 Days – ₹2400
+    </a>
+  </div>
+
+  {/* Lifetime Plan – Highlighted as Recommended */}
+  <div className="bg-gradient-to-br from-orange-50 to-orange-100 rounded-2xl border border-orange-200 shadow-lg p-8 flex flex-col relative">
+    <div className="absolute top-4 right-4 bg-green-600 text-white px-4 py-1 rounded-full text-sm font-bold">
+      Best Value
+    </div>
+    <h3 className="text-2xl font-bold text-gray-900 mb-4">Lifetime Access</h3>
+    <div className="flex items-center gap-4 mb-6">
+      <span className="text-2xl text-gray-400 line-through">₹5000</span>
+      <span className="text-4xl font-extrabold text-orange-600">₹3400</span>
+      <span className="text-xl font-bold text-green-600">(₹1600 OFF)</span>
+    </div>
+    <ul className="text-gray-800 space-y-3 mb-8 flex-1 font-medium">
+      <li>Forever access – all current & future content</li>
+      <li>30+ real interview problems (Java & C++)</li>
+      <li>Videos, runnable code, diagrams</li>
+      <li>Monthly new problems + lifetime updates</li>
+      <li>Priority Q&A & mock interviews</li>
+    </ul>
+    <a
+      href="https://interview.lldcoding.com?plan=lifetime"
+      className="mt-auto bg-gradient-to-r from-orange-600 to-orange-700 text-white text-center py-4 px-8 rounded-xl font-bold text-lg hover:brightness-110 transition shadow-lg"
+    >
+      Get Lifetime – ₹3400
+    </a>
+  </div>
+</div>
+
+{/* Small note below */}
+<p className="text-center text-sm text-gray-500 mt-6">
+  Limited time offer • Prices include all future updates • Choose what fits your prep journey
+</p>
+
+
+
+
+
+
+
+
+
 <p align="center">
   <a href="https://hashnode.com">
     <picture>

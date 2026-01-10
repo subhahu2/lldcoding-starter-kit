@@ -100,6 +100,7 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
 
   // Memoize content for performance
   const postContent = useMemo(() => (
+    <>
     <div
       id="post-content-wrapper"
       className="prose prose-lg min-h-30 dark:prose-dark xl:prose-xl mx-auto mb-10 break-words animate-fadeInUp"
@@ -110,6 +111,72 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
       aria-label="Article Content"
       tabIndex={0}
     />
+
+    {!(hasSignedIn && hasAccess) 
+      && (
+    <>
+<div className="text-center bg-gray-50 p-8 sm:p-12 rounded-2xl mt-12 border border-gray-200">
+  <h3 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-6">
+    Ready to Master LLD & Concurrency?
+  </h3>
+
+  {/* Discount Highlights – Both Offers */}
+  <div className="space-y-8 mb-10">
+    {/* 360 Days */}
+    <div>
+      <p className="text-lg text-gray-700 mb-2">360 Days Access</p>
+      <div className="inline-flex items-center gap-4">
+        <span className="text-2xl text-gray-400 line-through">₹3600</span>
+        <span className="text-4xl font-extrabold text-orange-600">₹2400</span>
+        <span className="text-xl font-bold text-green-600">(₹1200 OFF)</span>
+      </div>
+    </div>
+
+    {/* Lifetime – Slightly emphasized */}
+    <div>
+      <p className="text-lg text-gray-700 mb-2 font-semibold">Lifetime Access (Best Value)</p>
+      <div className="inline-flex items-center gap-4">
+        <span className="text-2xl text-gray-400 line-through">₹5000</span>
+        <span className="text-4xl font-extrabold text-orange-600">₹3400</span>
+        <span className="text-xl font-bold text-green-600">(₹1600 OFF)</span>
+      </div>
+    </div>
+  </div>
+
+  <p className="text-base sm:text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+    Choose the plan that fits your prep journey — full access to 50+ problems, videos, Java Code & monthly updates.
+  </p>
+
+  {/* Single Big CTA Button – Direct to course page */}
+  <a
+    href="https://interview.lldcoding.com"
+    className="inline-block bg-gradient-to-r from-orange-500 to-orange-600 text-white px-10 py-5 rounded-xl font-bold text-lg hover:brightness-110 transition shadow-lg"
+  >
+    Choose Your Plan & Enroll Now
+  </a>
+
+  <p className="text-sm text-gray-500 mt-6">
+    Limited time offer • Lifetime includes all future content • No hidden fees
+  </p>
+</div>
+
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 shadow-lg z-[60]">
+  <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+    <p className="text-sm sm:text-base text-gray-700">
+      Loved this design? Unlock <strong>50+ more lld and concurrency problems + full Java solutions</strong> in the course!
+    </p>
+    <a
+      href="https://interview.lldcoding.com"
+      className="bg-orange-600 text-white px-6 py-2.5 rounded-lg font-medium hover:bg-orange-700 transition whitespace-nowrap"
+    >
+      Enroll Now →
+    </a>
+  </div>
+</div>
+</>
+      )}
+
+    </>
   ), [memoizedPostContent]);
 
   if (!hasMounted) return null; // Prevent hydration mismatch
