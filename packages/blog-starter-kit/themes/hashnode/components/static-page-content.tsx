@@ -9,13 +9,13 @@ type Props = {
 function StaticPageContent(props: Props) {
   const { content, title } = props.pageContent;
 
-  if(title == "LLD Problem Sheet") {
-    return (
-      <>
-      <LLDProblemSheet />
-      </>
-    );
-  }
+  // if(title == "LLD Problem Sheet") {
+  //   return (
+  //     <>
+  //     <LLDProblemSheet />
+  //     </>
+  //   );
+  // }
 
   return (
     <div className={`blog-page-card pb-32`}>
