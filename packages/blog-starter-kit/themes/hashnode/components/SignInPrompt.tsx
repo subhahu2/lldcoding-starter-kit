@@ -12,7 +12,7 @@ const SignInPrompt: React.FC<MyComponentProps> =  ({ onSignIn }) => {
       const result = await signInWithPopup(auth, googleProvider);
       const user = result.user;
 
-      console.log('Signed in user:', user);
+      // console.log('Signed in user:', user);
       onSignIn(); // Call the onSignIn callback to update the state
     } catch (error) {
       console.error('Error signing in with Google:', error);

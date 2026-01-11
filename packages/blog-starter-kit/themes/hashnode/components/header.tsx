@@ -38,7 +38,7 @@ export const Header = (props: Props) => {
 		if (userAccess) {
 			try {
 				const parsed = JSON.parse(userAccess);
-				console.log('User access from localStorage:', parsed);
+				// console.log('User access from localStorage:', parsed);
 				setHasSignedIn(!!parsed.hasAccess);
 				setSubscriptionType(parsed.subscriptionType || null);
 				setOrderId(parsed.orderId || null);

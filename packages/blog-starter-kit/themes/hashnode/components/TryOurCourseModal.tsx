@@ -29,7 +29,7 @@ const TryOurCourseModal: React.FC<TryOurCourseModalProps> = ({ onClose }) => {
     // API call to upgrade membership
     try {
       // Replace this with your API call logic
-      console.log('Upgrading membership to lifetime...');
+      // console.log('Upgrading membership to lifetime...');
       window.location.href = 'https://payments.cashfree.com/forms/try-lldcoding';
       onClose(); // Close modal on success
     } catch (error) {
