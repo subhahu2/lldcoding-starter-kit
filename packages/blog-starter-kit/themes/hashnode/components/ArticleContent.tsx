@@ -92,7 +92,7 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
   }, [hasMounted]);
 
   useEffect(() => {
-    if (articleViews > 1 && !showLimitModal) setShowLimitModal(true);
+    if (articleViews > 4 && !showLimitModal) setShowLimitModal(true);
   }, [articleViews]);
 
   const handleSignIn = useCallback(() => setHasSignedIn(true), []);
@@ -183,7 +183,7 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
   if (loading) return <LoadingSpinner />;
 
   // Show sign-in prompt if the user has viewed more than 2 articles and hasn't signed in
-  if (articleViews > 1 && !hasSignedIn) {
+  if (articleViews > 2 && !hasSignedIn) {
     return <SignInPrompt onSignIn={handleSignIn} />;
   }
 
@@ -194,7 +194,7 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
     return postContent;
   }
 
-  if (articleViews > 1) {
+  if (articleViews > 4) {
     if(showLimitModal) {
       return <ArticleLimitModal onClose={handleCloseLimitModal} />;
     }
