@@ -112,7 +112,7 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
       tabIndex={0}
     />
 
-    {!(hasSignedIn && hasAccess) 
+    {!hasAccess
       && (
     <>
 <div className="text-center bg-gray-50 p-8 sm:p-12 rounded-2xl mt-12 border border-gray-200">
@@ -177,7 +177,7 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
       )}
 
     </>
-  ), [memoizedPostContent]);
+  ), [memoizedPostContent, hasAccess]);
 
   if (!hasMounted) return null; // Prevent hydration mismatch
   if (loading) return <LoadingSpinner />;
@@ -189,6 +189,8 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
 
   // If user is signed in and has access from Firestore, allow unlimited access
   if (hasSignedIn && hasAccess) {
+    // console.log("########### ----------------")
+
     return postContent;
   }
 
