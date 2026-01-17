@@ -92,7 +92,7 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
   }, [hasMounted]);
 
   useEffect(() => {
-    if (articleViews > 4 && !showLimitModal) setShowLimitModal(true);
+    if (articleViews > 40 && !showLimitModal) setShowLimitModal(true);
   }, [articleViews]);
 
   const handleSignIn = useCallback(() => setHasSignedIn(true), []);
@@ -194,7 +194,7 @@ const ArticleContent: React.FC<ArticleContentProps> = React.memo(({ memoizedPost
     return postContent;
   }
 
-  if (articleViews > 4) {
+  if (articleViews > 40) {
     if(showLimitModal) {
       return <ArticleLimitModal onClose={handleCloseLimitModal} />;
     }
