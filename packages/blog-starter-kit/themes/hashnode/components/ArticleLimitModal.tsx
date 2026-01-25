@@ -134,7 +134,7 @@ const ArticleLimitModal: React.FC<ArticleLimitModalProps> = React.memo(({ onClos
               target="_blank"
               rel="noopener noreferrer"
             >
-              Subscribe for ₹149/month
+              Subscribe for ₹115/month For 3 Months
             </a>
             <p className="text-xs md:text-sm text-center mt-2 text-gray-500">
               No Auto Renew
