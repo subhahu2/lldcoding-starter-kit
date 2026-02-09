@@ -66,13 +66,13 @@ const PostPageNavbar = forwardRef<HTMLElement, Props>((props, ref) => {
 
 	return (
 		<>
-		<div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
+		{/* <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
       				<span>
 						🚨📢📢 C++ Course , will be launched by 01 Feb. Till 01 Feb, we are offering <b>500rs extra discount</b> as pre-launch offer.
 					</span>
    	 			</div>
-		</div>
+		</div> */}
 		{/* <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
       				<span>🚨 IMPORTANT ALERT: All LLDcoding Course Prices (including Lifetime & Extensions) will INCREASE by ₹300 starting 1st January 2026! Enroll NOW to lock in current pricing</span>
