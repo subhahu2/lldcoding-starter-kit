@@ -73,7 +73,7 @@ export const Header = (props: Props) => {
 			</div> */}
 			{/* <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
-      				<span>🚨 IMPORTANT ALERT: All LLDcoding Course Prices (including Lifetime & Extensions) will INCREASE by ₹300 starting 1st January 2026! Enroll NOW to lock in current pricing</span>
+      				<span>🚨JUST FOR TODAY: 300rs Discount on Java Courses. Use Coupon Code - MAR333 </span>
    	 			</div>
 			</div> */}
 			<SubscriptionDaysCounter />

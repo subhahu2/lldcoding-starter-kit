@@ -34,7 +34,14 @@ const SubscriptionDaysCounter = () => {
   }, []);
 
   if (!isValidSubscription || daysLeft === null) {
-    return null; // Don't render anything if no valid subscription
+    return (
+      <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
+    			<div className="marquee">
+      				<span>🚨JUST FOR TODAY: 300rs Discount on Java Courses. Use Coupon Code - MAR333 </span>
+   	 			</div>
+			</div>
+    )
+    // return null; // Don't render anything if no valid subscription
   }
 
   return (
