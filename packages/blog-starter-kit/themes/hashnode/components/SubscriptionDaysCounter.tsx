@@ -37,7 +37,7 @@ const SubscriptionDaysCounter = () => {
     return (
       <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
-      				<span>🚨JUST FOR TODAY: 300rs Discount on Java Courses. Use Coupon Code - MAR333 </span>
+      				<span>📌 12-Hour Refund Policy: Email us at admin@lldcoding.com within 12 hours of purchase to get a full refund.</span>
    	 			</div>
 			</div>
     )
