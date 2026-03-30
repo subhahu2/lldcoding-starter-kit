@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import OfferRunner from "./OfferRunner";
+
 
 const SubscriptionDaysCounter = () => {
   const [daysLeft, setDaysLeft] = useState<number | null>(null);
@@ -35,11 +37,14 @@ const SubscriptionDaysCounter = () => {
 
   if (!isValidSubscription || daysLeft === null) {
     return (
+      <>
+      <OfferRunner />
       <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
       				<span>📌 12-Hour Refund Policy: Email us at admin@lldcoding.com within 12 hours of purchase to get a full refund.</span>
    	 			</div>
 			</div>
+      </>
     )
     // return null; // Don't render anything if no valid subscription
   }
