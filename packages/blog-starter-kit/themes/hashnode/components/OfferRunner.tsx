@@ -39,17 +39,10 @@ export default function OfferRunner() {
   const isUrgent = timeLeft > 0 && timeLeft < 2 * 60 * 60 * 1000;
   const isExpired = timeLeft === 0;
 
-  if (isExpired) {
-    // return (
-    //   <div className="fixed top-0 left-0 w-full z-50 bg-slate-950 text-center py-2 text-sm text-slate-500">
-    //     Offer expired
-    //   </div>
-    // );
-    return null;
-  }
+  if (isExpired) return null;
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50">
+    <div className="w-full z-50">
       <div
         className="border-b"
         style={{
@@ -60,18 +53,25 @@ export default function OfferRunner() {
             : "rgba(249,115,22,0.2)",
         }}
       >
-        {/* 🔥 SINGLE LINE */}
-        <div className="max-w-6xl mx-auto px-4 py-2.5 flex items-center justify-center gap-4 text-sm sm:text-base whitespace-nowrap overflow-hidden">
+        {/* 🔥 SINGLE LINE RESPONSIVE */}
+        <div className="max-w-6xl mx-auto px-3 sm:px-4 py-2 flex items-center justify-center gap-2 sm:gap-4 text-xs sm:text-base overflow-hidden">
 
-          {/* Offer */}
-          <span className="text-orange-400">🔥</span>
-          <span className="font-semibold text-slate-100">
-            ₹400 OFF Lifetime Access (JAVA)
+          {/* 🔥 Icon */}
+          <span className="text-orange-400 shrink-0">🔥</span>
+
+          {/* Offer (shorter on mobile) */}
+          <span className="font-semibold text-slate-100 truncate">
+            <span className="hidden sm:inline">
+              ₹400 OFF Lifetime Access (JAVA)
+            </span>
+            <span className="sm:hidden">
+              ₹400 OFF
+            </span>
           </span>
 
           {/* Code */}
           <span
-            className="font-mono font-bold text-xs px-2 py-1 rounded-md"
+            className="font-mono font-bold text-[10px] sm:text-xs px-2 py-0.5 rounded-md shrink-0"
             style={{
               background: "rgba(249,115,22,0.12)",
               border: "1px solid rgba(249,115,22,0.3)",
@@ -81,24 +81,27 @@ export default function OfferRunner() {
             MAR400
           </span>
 
-          {/* Divider */}
-          <span className="text-slate-600">|</span>
+          {/* Divider (hide on very small screens) */}
+          <span className="text-slate-600 hidden xs:inline">|</span>
 
-          {/* ⏳ TIMER (HERO) */}
+          {/* ⏳ TIMER (MOST IMPORTANT) */}
           <span
-            className={`font-mono font-bold tracking-wider text-base sm:text-lg ${
+            className={`font-mono font-bold tracking-wider text-sm sm:text-lg shrink-0 ${
               isUrgent ? "text-red-500 animate-pulse" : "text-white"
             }`}
           >
-            {pad(hrs)}h:{pad(mins)}m:{pad(secs)}s
+            {pad(hrs)}:{pad(mins)}:{pad(secs)}
           </span>
 
-          <span className="text-slate-500 text-xs sm:text-sm">left</span>
+          {/* left text (hide on mobile) */}
+          <span className="text-slate-500 text-xs hidden sm:inline">
+            left
+          </span>
 
-          {/* CTA */}
+          {/* CTA (compact on mobile) */}
           <a
             href="https://interview.lldcoding.com/buy-course/course2"
-            className="ml-2 px-3 py-1 rounded-md text-xs font-semibold transition-all"
+            className="ml-1 sm:ml-2 px-2 sm:px-3 py-1 rounded-md text-[10px] sm:text-xs font-semibold transition-all shrink-0"
             style={{
               background: isUrgent
                 ? "rgba(239,68,68,0.15)"
@@ -111,7 +114,7 @@ export default function OfferRunner() {
               color: isUrgent ? "#f87171" : "#f97316",
             }}
           >
-            Claim →
+            Claim
           </a>
         </div>
 
