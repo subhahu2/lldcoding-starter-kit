@@ -44,6 +44,11 @@ const SubscriptionDaysCounter = () => {
       				<span>📌 12-Hour Refund Policy: Email us at admin@lldcoding.com within 12 hours of purchase to get a full refund.</span>
    	 			</div>
 			</div>
+      <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
+    			<div className="marquee">
+      				<span>📌 PRE-LAUNCH offer for Upcoming Python Course: 1000rs discount for first 50 users, <a href="https://payments.cashfree.com/forms/lldcoding-python-course" className="underline">Click here</a> </span>
+   	 			</div>
+			</div>
       </>
     )
     // return null; // Don't render anything if no valid subscription
