@@ -46,7 +46,7 @@ const SubscriptionDaysCounter = () => {
 			</div>
       <div className="bg-brand-orange text-white text-center py-2 overflow-hidden">
     			<div className="marquee">
-      				<span>📌 PRE-LAUNCH offer for Upcoming Python Course: 1000rs discount for first 50 users, <a href="https://payments.cashfree.com/forms/lldcoding-python-course" className="underline">Click here</a> </span>
+      				<span>📌 PRE-LAUNCH offer for Upcoming Python Course: 1000rs discount for first 50 users, Now Only 9 seats left, <a href="https://payments.cashfree.com/forms/lldcoding-python-course" className="underline">Click here</a> </span>
    	 			</div>
 			</div>
       </>
